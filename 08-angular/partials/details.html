@@ -1,0 +1,15 @@
+<div class="col-sm-6" ng-model="users">
+    <h1>{{users[whichItem].name}}</h1>
+    <h5>User Details:</h5>
+    name: {{users[whichItem].name}}<br>
+    username: {{users[whichItem].username}}<br>
+    email: {{users[whichItem].email}}<br>
+    <hr>
+    adress:<br >
+    {{users[whichItem].address.street}}<br>
+    {{users[whichItem].address.suite}}<br>
+    {{users[whichItem].address.city}}<br>
+    {{users[whichItem].address.zipcode}}<br>
+    <hr>
+    phone: {{users[whichItem].phone}}<br>
+</div>

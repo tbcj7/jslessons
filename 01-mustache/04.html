@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>title</title>
+    <style type="text/css">
+#post, #post * {
+	background: #ffffff;
+	position: relative;
+	height: auto;
+	width: auto;
+}
+
+    </style>
+
+  </head>
+  <body>
+    <!-- page content -->
+
+	<div id="speakerbox">
+		<a href="#" id="btn_next">&laquo;</a>
+		<a href="#" id="btn_prev">&raquo;</a>
+		<div id="carousel"></div>
+	</div>
+
+	<script id="poststpl" type="text/template">
+		{{#posts}}
+			<div id="post">
+				<div class="title"><b>{{title}}</b></div>
+				<div class="desc">{{body}}</div>
+				<div class="user"><i>Post by</i>: {{userId}}</div>
+			</div>
+		{{/posts}}
+	</script>
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.cycle/3.03/jquery.cycle.all.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
+
+
+	<script type="text/javascript">
+	$(function(){
+		$.getJSON('posts.json', function(data) {
+			var template = $('#poststpl').html();
+			var html = Mustache.to_html(template, data);
+			$('#carousel').html(html);
+
+			$('#carousel').cycle({
+				fx: 'fade',
+				pause: 1,
+				next: '#btn_next',
+				prev: '#btn_prev',
+				speed: 500,
+				timeout: 10000
+			}); // cycle2
+		}) // get JSON
+	}); // function
+	</script>
+  </body>
+</html>

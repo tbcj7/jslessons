@@ -1,0 +1,37 @@
+<div class="col-sm-3">
+    <input ng-model='query' class="form-control" type="text" autofocus />
+    <br>
+    <br>
+    <label for="">
+        <select name="" id="" class="form-control" ng-model="usersOrder">
+            <option value="none">None</option>
+            <option value="name">Name</option>
+            <option value="username">Username</option>
+        </select>
+    </label>
+    <br>
+    <br>
+    <div class="radio">
+        <label>
+            <input type="radio" ng-model="direction" name="optionsRadios" id="optionsRadios2" checked>
+            Asc
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            <input type="radio" ng-model="direction" name="optionsRadios" id="optionsRadios2" value="reverse">
+            Desc
+        </label>
+    </div>
+</div>
+<div class="col-sm-5">
+    <div ng-repeat="item in users | filter:query | orderBy: usersOrder:direction" class="col-sm-12">
+        <a href="#/details/{{users.indexOf(item)}}"> <b>{{item.name | uppercase}}</b></a>
+
+        <br>
+        {{item.username}}
+    </div>
+</div>
+<div class="col-sm-4">
+
+</div>
